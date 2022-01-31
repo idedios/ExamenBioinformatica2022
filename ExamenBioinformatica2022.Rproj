@@ -1,0 +1,52 @@
+---
+title: "ExamenBioinformatica2022"
+author: "Irene de Dios"
+date: "31/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+```
+
+## EXAMEN BIOINFORMATICA 2022
+### EJERCICIO 1.
+### a. ¿Cuantas palabras hay en el fichero?
+#### cat genes.txt | wc, aparecerán tres números, el del medio nos indicará el 
+#### numero de palabras
+
+### b. ¿Cómo cambiarías todos los tabulados por guiones?
+#### cat genes.txt | sed 's/\t/-/g'
+
+### c. ¿Cómo cambiarías solo la primera aparición?
+#### cat genes.txt | sed 's/\t/-/'
+
+### d.¿Como buscarías todos los genes excepto el gen llamado DSTYK?
+#### cat genes.txt | grep -v 'DSTYK'
+
+
+# EJERCICIO 2A. ¿Cuantas columnas y cuantos registros tiene el dataset?
+#### Para saber cuantas columnas y registros, lo podemos hacer de dos maneras, 
+#### nrow nos devolvera el numero de registros y ncol el de columnas. 
+#### si escribimos dim, nos dara ambos simultaneamente, primero las filas y seguidos, las columnas
+```{r}
+library(nycflights13)
+
+weather <- nycflights13::weather
+ncol(weather)
+nrow(weather)
+dim(weather)
+
+```
+#EJERCICIO 2B. ¿Cuántos “origin” diferentes existen y para cada uno de ellos cuántos registros hay?
+```{r}
+table(weather$origin)
+```
+
+#EJERCICIO 2C.  En LGA,  ¿cuálesfueron la mediana del wind_speed y media de pressure?
+```{r}
+LGA <- weather[weather$origin == "LGA",]
+
+median(LGA$wind_speed)
+mean(LGA$pressure, na.rm = T)
+```
+
