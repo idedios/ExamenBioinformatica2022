@@ -1,5 +1,5 @@
 ---
-title: "ExamenBioinf2022"
+title: "ExamenBioinformatica_2022"
 author: "Irene de Dios"
 date: "31/1/2022"
 output: html_document
@@ -66,34 +66,34 @@ dif_meses <- weather_NA %>%
   )
   dif_meses
 ```
-# EJERCICIO 3. 
+# EJERCICIO 3.1. Crea el plot anterior
 ```{r}
 EWR = weather[weather$origin =="EWR" ,]
 LGA = weather[weather$origin =="LGA" ,]
 JFK = weather[weather$origin =="JFK" ,]
-
-mes1 <- weather[weather$month == 1, ]
-mes2 <- weather[weather$month == 2, ]
-mes3 <- weather[weather$month == 3,]
-mes4 <- weather[weather$month == 4, ]
-mes5 <- weather[weather$month == 5, ]
-mes6 <- weather[weather$month == 6, ]
-mes7 <- weather[weather$month == 7, ]
-mes8 <- weather[weather$month == 8, ]
-mes9 <- weather[weather$month == 9, ]
-mes10 <- weather[weather$month == 10, ]
-mes11 <- weather[weather$month == 11, ]
-mes12 <- weather[weather$month == 12, ]
-
 par(mfrow = c(1,3))
-boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "EWR", col = 2)
-
-boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "JFK", col = 3)
-
-boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "LGA", col = 4)
+boxplot(EWR$temp~EWR$month, xlab = "Months", ylab = "ºC", main = "EWR", col = 2)
+boxplot(JFK$temp~JFK$month, xlab = "Months", ylab = "ºC", main = "JFK", col = 3)
+boxplot(LGA$temp~LGA$month, xlab = "Months", ylab = "ºC", main = "LGA", col = 4)
 
 
 ```
+# EJERCICIO 3.2.Crea una funcion
+```{r}
+function(x, y, z)
+{
+  boxplot(EWR$temp~EWR$month, xlab = "Months", ylab = "ºC", main = "EWR", col = "red")
+boxplot(JFK$temp~JFK$month, xlab = "Months", ylab = "ºC", main = "JFK", col = "green")
+boxplot(LGA$temp~LGA$month, xlab = "Months", ylab = "ºC", main = "LGA", col = "blue")
+}
+{
+  print(mean(EWR$temp, na.rm = T))
+  print(mean(JFK$temp, na.rm = T))
+  print(mean(LGA$temp, na.rm = T))
+}
+```
+
+
 # EJERCICIO 5a. ¿Cuál es el punto con FC (Fold change) más grande en valores absoluto
 ### El fold change esta en la x y nos dice cuantas veces mas o menos esta expresado un gen. En este caso, nos deberemos de fijar en que gen tiene los valores mas altos en valores absolutos. En este caso, será el punto morado de más a la izquierda, con un pvalor cercano a 5 sin nombre
 
